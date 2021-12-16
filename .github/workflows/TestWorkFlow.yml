@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Sample CI
 
 # Controls when the workflow will run
 on:
@@ -12,6 +12,14 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      username:
+        description: 'Your github username'
+        required: true
+      reason:
+        description: 'Why are you running this workflow manually?'
+        required: true
+        default: 'I am running tests'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -34,3 +42,9 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
+      # Reading input values
+      - name: Read and output the inputs from workflow_dispatch definition
+        run: |
+          echo "Your username is ${{ github.events.inputs.username }}"
+          echo "Your reason is ${{ github.events.inputs.reason }}"
