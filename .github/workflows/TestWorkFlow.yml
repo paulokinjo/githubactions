@@ -46,5 +46,5 @@ jobs:
       # Reading input values
       - name: Read and output the inputs from workflow_dispatch definition
         run: |
-          echo "Your username is ${{ github.events.inputs.username }}"
-          echo "Your reason is ${{ github.events.inputs.reason }}"
+          echo "Your username is ${{ github.event.inputs.username }}"
+          echo "Your reason is ${{ github.event.inputs.reason }}"
